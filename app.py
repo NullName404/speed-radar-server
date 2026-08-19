@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 BOT_TOKEN = os.environ.get('TELEGRAM_TOKEN')
-CHAT_ID = "ВАШ_CHAT_ID"  # Замените на ваш
+CHAT_ID = "8502815418"  # Замените на ваш
 
 TELEGRAM_API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}/sendPhoto"
 
