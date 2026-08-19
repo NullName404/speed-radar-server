@@ -2,9 +2,3 @@ Flask==2.2.3
 requests==2.31.0
 gunicorn==20.1.0
 Werkzeug==2.2.3
-setuptools==65.5.0
-easyocr==1.7.1
-numpy==1.24.3
-Pillow==10.0.0
-torch==2.0.1
-torchvision==0.15.2
