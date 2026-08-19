@@ -8,8 +8,6 @@ app = Flask(__name__)
 BOT_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 CHAT_ID = "8502815418"  # Замените на ваш
 
-TELEGRAM_API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}/sendPhoto"
-
 @app.route('/')
 def index():
     return "✅ Speed Radar Server is running!"
@@ -21,12 +19,12 @@ def upload():
         speed = request.form.get('speed', 'неизвестно')
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
-        caption = f"🚗 Проезд зафиксирован\n📅 {timestamp}\n📊 Скорость: {speed} км/ч"
+        caption = f"🚗 Проезд\n📅 {timestamp}\n📊 Скорость: {speed} км/ч"
         
         files = {'photo': (photo.filename, photo.read(), photo.mimetype)}
         data = {'chat_id': CHAT_ID, 'caption': caption}
         
-        response = requests.post(TELEGRAM_API_URL, files=files, data=data)
+        response = requests.post(f"https://api.telegram.org/bot{BOT_TOKEN}/sendPhoto", files=files, data=data)
         
         if response.status_code == 200:
             return jsonify({"status": "ok"}), 200
